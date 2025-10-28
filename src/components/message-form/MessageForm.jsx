@@ -1,5 +1,10 @@
 import { auth } from "../../firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import { useState } from "react";
 
@@ -32,6 +37,7 @@ function MessageForm() {
             setFormValue(e.target.value);
           }}
           placeholder="Message Here"
+          value={FormValue}
         />
         <button type="submit">Send</button>
       </form>
