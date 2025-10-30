@@ -11,13 +11,14 @@ function MessageForm() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL, displayName } = auth.currentUser;
     try {
       const message = await addDoc(messageRef, {
         text: FormValue,
         createdAt: serverTimestamp(),
         uid,
         photoURL,
+        displayName,
       });
     } catch (error) {
       console.error(`error print:`, error);

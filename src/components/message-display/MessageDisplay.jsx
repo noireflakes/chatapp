@@ -52,7 +52,7 @@ function MessageDisplay({ message }) {
     <div className={`message-cont ${messageClass}`}>
       <img className="profile" src={message.photoURL} alt="profile" />
       <div className="content">
-        <p className="username">{auth.currentUser.displayName}</p>
+        <p className="username">{message.displayName}</p>
         <p className={messageClass}>{message.text}</p>
       </div>
       <p className="timestamp">{timestamp}</p>

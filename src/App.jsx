@@ -30,7 +30,7 @@ function App() {
     if (!auth.currentUser) {
       return;
     }
-    const unsubcribe = onSnapshot(q, (query) => {
+    const unsubscribe = onSnapshot(q, (query) => {
       const messageData = [];
       query.forEach((data) => {
         const message = data.data();
@@ -40,12 +40,13 @@ function App() {
           uid: message.uid,
           photoURL: message.photoURL,
           createdAt: message.createdAt,
+          displayName: message.displayName,
         });
         console.log("this is the time", message.createdAt.toDate());
       });
       setMessages(messageData);
     });
-    return () => unsubcribe();
+    return () => unsubscribe();
   }, [isLogin]);
 
   //autoScroll when new Message

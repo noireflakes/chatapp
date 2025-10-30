@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 form {
