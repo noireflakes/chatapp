@@ -1,0 +1,25 @@
+#btn img {
+  width: auto;
+  height: 21px;
+}
+
+#btn {
+  background-color: rgb(255, 255, 255);
+  padding: 15px 5px 10px 5px;
+  border-radius: 10px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s ease-in;
+}
+#btn:hover {
+  background-color: rgba(75, 75, 75, 0.514);
+  cursor: pointer;
+}
+h5 {
+  color: rgba(255, 255, 255, 0.616);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}

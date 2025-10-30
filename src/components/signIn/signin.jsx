@@ -1,5 +1,7 @@
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+import "./signin.css";
 function SignIn() {
   const btn = document.getElementById("btn");
   const SignInGoogle = async () => {
@@ -12,9 +14,15 @@ function SignIn() {
   };
 
   return (
-    <button id="btn" onClick={SignInGoogle}>
-      sign in
-    </button>
+    <div>
+      <h5>Sign In:</h5>
+      <a id="btn" onClick={SignInGoogle}>
+        <img
+          src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          alt="Google"
+        ></img>
+      </a>
+    </div>
   );
 }
 export default SignIn;

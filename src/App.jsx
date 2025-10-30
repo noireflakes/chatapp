@@ -2,7 +2,7 @@ import { use, useState, useEffect } from "react";
 import "./App.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "./firebase";
-
+import { useRef } from "react";
 import {
   collection,
   getDocs,
@@ -12,10 +12,10 @@ import {
   orderBy,
 } from "firebase/firestore";
 
+import Navbar from "./components/navbar/navbar";
 import SignIn from "./components/signin/signin";
 import MessageDisplay from "./components/message-display/MessageDisplay";
 import MessageForm from "./components/message-form/MessageForm";
-import { subscribe } from "firebase/data-connect";
 
 function App() {
   const [isLogin] = useAuthState(auth);
@@ -23,8 +23,13 @@ function App() {
   const q = query(messageRef, orderBy("createdAt", "asc"));
 
   const [Messages, setMessages] = useState([]);
+  const chatroomRef = useRef();
 
+  //Update and Listen for new Messages
   useEffect(() => {
+    if (!auth.currentUser) {
+      return;
+    }
     const unsubcribe = onSnapshot(q, (query) => {
       const messageData = [];
       query.forEach((data) => {
@@ -34,39 +39,41 @@ function App() {
           text: message.text,
           uid: message.uid,
           photoURL: message.photoURL,
+          createdAt: message.createdAt,
         });
+        console.log("this is the time", message.createdAt.toDate());
       });
       setMessages(messageData);
     });
     return () => unsubcribe();
-  }, []);
+  }, [isLogin]);
 
+  //autoScroll when new Message
   useEffect(() => {
-    console.log("this is the usestate for message", Messages);
-  });
-
-  function messagestate() {
-    console.log("this is the usestate for message", Messages);
-  }
+    if (chatroomRef.current) {
+      chatroomRef.current.scrollTop = chatroomRef.current.scrollHeight;
+    }
+  }, [Messages]);
 
   return (
     <>
       {isLogin ? (
-        <div>
-          <button className="sign-out" onClick={() => auth.signOut()}>
-            Sign Out
-          </button>
-          <div className="chatroom">
+        <div className="page">
+          <Navbar />
+
+          <div className="chatroom" ref={chatroomRef}>
             {Messages.map((msg) => {
               return <MessageDisplay message={msg} key={msg.id} />;
             })}
           </div>
 
           <MessageForm />
-          <button onClick={messagestate}>messagstate</button>
         </div>
       ) : (
-        <SignIn />
+        <div className="homepage page">
+          <h1>Chat App</h1>
+          <SignIn />
+        </div>
       )}
     </>
   );

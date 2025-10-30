@@ -1,0 +1,40 @@
+.form-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+form {
+  display: flex;
+  width: 80%;
+  background-color: rgb(49, 49, 49);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+form input {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 90%;
+
+  margin-left: 5px;
+}
+form input:focus {
+  border: none;
+  outline: none;
+}
+.sendbtn {
+  background: none;
+  border: none;
+  color: rgba(190, 190, 190, 0.808);
+  font-size: 16px;
+  font-weight: 600;
+  width: 10%;
+  transition: color 0.1s ease-in;
+}
+
+.sendbtn:hover {
+  color: rgb(255, 255, 255);
+}

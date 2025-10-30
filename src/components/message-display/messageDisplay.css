@@ -1,11 +1,46 @@
 .message-cont {
   display: flex;
-  flex-direction: row;
   gap: 10px;
-  margin-top: 20px;
+  margin: 30px 0;
 }
 .profile {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: auto;
   border-radius: 50%;
+}
+.sent {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+.received {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sent p {
+  align-self: flex-start;
+}
+p {
+  color: white;
+}
+.username {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.sent .username {
+  color: rgb(106, 104, 255);
+}
+.received .username {
+  color: rgb(150, 112, 255);
+}
+.timestamp {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.527);
+}
+@media screen and (max-width: 700px) {
+  .timestamp {
+    font-size: 10px;
+  }
 }

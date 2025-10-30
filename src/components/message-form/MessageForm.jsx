@@ -1,12 +1,9 @@
 import { auth } from "../../firebase";
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  onSnapshot,
-} from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useState } from "react";
+
+import "./MessageForm.css";
 
 function MessageForm() {
   const messageRef = collection(db, "messages");
@@ -22,14 +19,13 @@ function MessageForm() {
         uid,
         photoURL,
       });
-      console.log("message send");
     } catch (error) {
       console.error(`error print:`, error);
     }
     setFormValue("");
   };
   return (
-    <div>
+    <div className="form-cont">
       <form onSubmit={sendMessage}>
         <input
           type="text"
@@ -39,7 +35,9 @@ function MessageForm() {
           placeholder="Message Here"
           value={FormValue}
         />
-        <button type="submit">Send</button>
+        <button className="sendbtn" type="submit">
+          Send
+        </button>
       </form>
     </div>
   );
