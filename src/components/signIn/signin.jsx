@@ -9,7 +9,7 @@ function SignIn() {
     try {
       await signInWithPopup(auth, provider);
     } catch (error) {
-      console.error("error", error.code);
+      console.error("error");
     }
   };
 

@@ -1,5 +1,4 @@
-import { use, useState, useEffect } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "./firebase";
 import { useRef } from "react";
@@ -12,6 +11,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 
+import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import SignIn from "./components/signin/signin";
 import MessageDisplay from "./components/message-display/MessageDisplay";
