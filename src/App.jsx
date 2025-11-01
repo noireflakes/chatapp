@@ -42,7 +42,6 @@ function App() {
           createdAt: message.createdAt,
           displayName: message.displayName,
         });
-        console.log("this is the time", message.createdAt.toDate());
       });
       setMessages(messageData);
     });
