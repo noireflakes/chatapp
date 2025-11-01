@@ -38,4 +38,7 @@
   .chatroom > * {
     padding: 0 10px;
   }
+  .homepage h1 {
+    font-size: 40px;
+  }
 }
